@@ -1,8 +1,20 @@
 public class Percolation
 {            
+	
+	private int[][] singlePoint;
+	private boolean[][] grid;
     public Percolation(int n)
     {
-    	throw new UnsupportedOperationException();
+    	grid = new int[n][n];
+    	singlePoint = new int[n][n];
+    	
+    	for(int i = 0; i < n; i++)
+    	{
+    		for(int j = 0; j < n; j++)
+    		{
+    			
+    		}
+    	}
     }
 
     public void open(int i, int j)
@@ -12,7 +24,7 @@ public class Percolation
 
     public boolean isOpen(int i, int j)
     {
-        throw new UnsupportedOperationException();
+    	if()
     }
 
     public boolean isFull(int i, int j)
