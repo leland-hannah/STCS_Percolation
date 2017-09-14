@@ -5,7 +5,7 @@ public class Percolation
 	private boolean[][] grid;
     public Percolation(int n)
     {
-    	grid = new int[n][n];
+    	grid = new boolean[n][n];
     	singlePoint = new int[n][n];
     	
     	for(int i = 0; i < n; i++)
