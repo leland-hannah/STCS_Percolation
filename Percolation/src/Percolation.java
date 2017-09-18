@@ -3,7 +3,7 @@ public class Percolation
 	
 	private int[][] singlePoint;
 	private boolean[][] grid;
-	private ;
+	
 	
     public Percolation(int n)
     {
@@ -31,11 +31,28 @@ public class Percolation
 
     public boolean isFull(int i, int j)
     {
-        throw new UnsupportedOperationException();
+        if(grid[i][j])
+        {
+        	
+        	
+        }
+        return false;
     }
 
     public boolean percolates()
     {
-        
+        return false;
     }
+    
+    
+    public static void main(String[] args)
+    {
+    	Percolation perlocation = new Percolation(5);
+    	
+    	
+    	
+    }
+    
+    
+    
 }
