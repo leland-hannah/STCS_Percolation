@@ -5,12 +5,14 @@ public class Percolation
 	private boolean[][] grid;
 	private WeightedQuickUnionUF wu;
 	private int vTop = 0;
-	private int vBottom;
+	private int vBottom; 
 	
     public Percolation(int n)
     {
     	grid = new boolean[n][n];
     	singlePoint = new int[n][n];
+    	wu = new WeightedQuickUnionUF((n*n) + 2);
+    	vBottom = (n*n) + 1;
     	
     	for(int i = 0; i < n; i++)
     	{
@@ -35,7 +37,10 @@ public class Percolation
     {
         if(grid[i][j])
         {
-        	
+        	if(wu.find(vTop) == wu.find())
+        	{
+        		
+        	}
         	
         }
         return false;
@@ -49,7 +54,7 @@ public class Percolation
     
     public static void main(String[] args)
     {
-    	Percolation perlocation = new Percolation(5);
+    	Percolation perlocation = new Percolation(4);
     	
     	
     	
