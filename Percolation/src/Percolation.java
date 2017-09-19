@@ -3,7 +3,9 @@ public class Percolation
 	
 	private int[][] singlePoint;
 	private boolean[][] grid;
-	
+	private WeightedQuickUnionUF wu;
+	private int vTop = 0;
+	private int vBottom;
 	
     public Percolation(int n)
     {
