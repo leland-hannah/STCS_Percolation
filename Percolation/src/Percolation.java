@@ -63,9 +63,11 @@ public class Percolation
     
     public static void main(String[] args)
     {
-    	Percolation perlocation = new Percolation(6);
-    	perlocation.open(1, 1);
-    	PercolationVisualizer.draw(perlocation, 5);
+    	Percolation perlocation = new Percolation(20);
+    	perlocation.open(1, 6);
+    	perlocation.open(2, 6);
+    	perlocation.open(3, 6);
+    	PercolationVisualizer.draw(perlocation, 19);
     }
     
     
