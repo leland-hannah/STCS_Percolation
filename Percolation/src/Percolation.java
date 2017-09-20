@@ -41,7 +41,7 @@ public class Percolation
     {
     	if(grid[i][j])
     	{
-        	if(wu.find(vTop) == wu.find(singlePoint[i][j-1]))
+        	if(wu.find(vTop) == wu.find(singlePoint[i][j]))
         	{
         		return true;
         	}
@@ -65,7 +65,7 @@ public class Percolation
     {
     	Percolation perlocation = new Percolation(6);
     	perlocation.open(1, 1);
-    	
+    	PercolationVisualizer.draw(perlocation, 5);
     }
     
     
