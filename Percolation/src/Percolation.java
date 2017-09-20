@@ -16,9 +16,13 @@ public class Percolation
     	
     	for(int i = 0; i < n; i++)
     	{
+    		int inside = 1;
     		for(int j = 0; j < n; j++)
     		{
     			grid[i][j] = false;
+    			singlePoint[i][j] = inside;
+    			inside++;
+    			
     		}
     	}
     }
@@ -37,9 +41,9 @@ public class Percolation
     {
         if(grid[i][j])
         {
-        	if(wu.find(vTop) == wu.find())
+        	if(wu.find(vTop) == wu.find(singlePoint[i][j]))
         	{
-        		
+        		return true;
         	}
         	
         }
@@ -48,7 +52,12 @@ public class Percolation
 
     public boolean percolates()
     {
-        return false;
+        if(wu.find(vTop) == wu.find(vBottom))
+        {
+        	return true;
+        }
+    	
+    	return false;
     }
     
     
