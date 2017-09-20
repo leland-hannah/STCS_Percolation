@@ -13,10 +13,10 @@ public class Percolation
     	singlePoint = new int[n][n];
     	wu = new WeightedQuickUnionUF((n*n) + 2);
     	vBottom = (n*n) + 1;
+    	int inside = 1;
     	
     	for(int i = 0; i < n; i++)
     	{
-    		int inside = 1;
     		for(int j = 0; j < n; j++)
     		{
     			grid[i][j] = false;
@@ -39,14 +39,14 @@ public class Percolation
 
     public boolean isFull(int i, int j)
     {
-        if(grid[i][j])
-        {
-        	if(wu.find(vTop) == wu.find(singlePoint[i][j]))
+    	if(grid[i][j])
+    	{
+        	if(wu.find(vTop) == wu.find(singlePoint[i][j-1]))
         	{
         		return true;
         	}
-        	
-        }
+    	}
+        
         return false;
     }
 
@@ -63,9 +63,8 @@ public class Percolation
     
     public static void main(String[] args)
     {
-    	Percolation perlocation = new Percolation(4);
-    	
-    	
+    	Percolation perlocation = new Percolation(6);
+    	perlocation.open(1, 1);
     	
     }
     
