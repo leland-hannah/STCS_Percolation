@@ -34,22 +34,22 @@ public class Percolation
     	{
     		wu.union(singlePoint[i][j], vTop);
     	}
-    	if(grid[i+1][j])
-    	{
-    		wu.union(singlePoint[i][j], singlePoint[i+1][j]);
-    	}
+//    	if(grid[i+1][j])
+//    	{
+//    		wu.union(singlePoint[i][j], singlePoint[i+1][j]);
+//    	}
     	if(grid[i-1][j])
     	{
     		wu.union(singlePoint[i][j], singlePoint[i-1][j]);
     	}
-    	if(grid[i][j+1])
-    	{
-    		wu.union(singlePoint[i][j], singlePoint[i][j+1]);
-    	}
-    	if(grid[i][j-1])
-    	{
-    		wu.union(singlePoint[i][j], singlePoint[i][j-1]);
-    	}
+//    	if(grid[i][j+1])
+//    	{
+//    		wu.union(singlePoint[i][j], singlePoint[i][j+1]);
+//    	}
+//    	if(grid[i][j-1])
+//    	{
+//    		wu.union(singlePoint[i][j], singlePoint[i][j-1]);
+//    	}
     }
 
     public boolean isOpen(int i, int j)
