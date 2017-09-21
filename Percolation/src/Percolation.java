@@ -83,16 +83,16 @@ public class Percolation
     }
     
     
-    public static void main(String[] args)
-    {
-    	Percolation perlocation = new Percolation(20);
-    	perlocation.open(1, 5);
-    	perlocation.open(2, 5);
-    	perlocation.open(3, 5);
-    	perlocation.open(4, 5);
-    	perlocation.open(5, 5);
-    	PercolationVisualizer.draw(perlocation, 5);
-    }
+//    public static void main(String[] args)
+//    {
+//    	Percolation perlocation = new Percolation(20);
+//    	perlocation.open(1, 5);
+//    	perlocation.open(2, 5);
+//    	perlocation.open(3, 5);
+//    	perlocation.open(4, 5);
+//    	perlocation.open(5, 5);
+//    	PercolationVisualizer.draw(perlocation, 5);
+//    }
     
     
     
