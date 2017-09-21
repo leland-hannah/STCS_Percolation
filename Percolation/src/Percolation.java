@@ -9,47 +9,47 @@ public class Percolation
 	
     public Percolation(int n)
     {
-    	grid = new boolean[n][n];
-    	singlePoint = new int[n][n];
+    	grid = new boolean[n][n+1];
+    	singlePoint = new int[n][n+1];
     	wu = new WeightedQuickUnionUF((n*n) + 2);
     	vBottom = (n*n) + 1;
-    	int inside = 1;
+//    	int inside = 1;
     	
-    	for(int i = 0; i < n; i++)
-    	{
-    		for(int j = 0; j < n; j++)
-    		{
-    			grid[i][j] = false;
-    			singlePoint[i][j] = inside;
-    			inside++;
-    			
-    		}
-    	}
+//    	for(int i = 0; i < n; i++)
+//    	{
+//    		for(int j = 0; j < n; j++)
+//    		{
+//    			singlePoint[i][j] = inside;
+//    			inside++;
+//    			
+//    		}
+//    	}
     }
 
     public void open(int i, int j)
     {
     	grid[i][j] = true;
+    	
     	if(i == 1)
     	{
     		wu.union(singlePoint[i][j], vTop);
     	}
-//    	if(grid[i+1][j])
-//    	{
-//    		wu.union(singlePoint[i][j], singlePoint[i+1][j]);
-//    	}
+    	if(grid[i+1][j])
+    	{
+    		wu.union(singlePoint[i][j], singlePoint[i+1][j]);
+    	}
     	if(grid[i-1][j])
     	{
     		wu.union(singlePoint[i][j], singlePoint[i-1][j]);
     	}
-//    	if(grid[i][j+1])
-//    	{
-//    		wu.union(singlePoint[i][j], singlePoint[i][j+1]);
-//    	}
-//    	if(grid[i][j-1])
-//    	{
-//    		wu.union(singlePoint[i][j], singlePoint[i][j-1]);
-//    	}
+    	if(grid[i][j+1])
+    	{
+    		wu.union(singlePoint[i][j], singlePoint[i][j+1]);
+    	}
+    	if(grid[i][j-1])
+    	{
+    		wu.union(singlePoint[i][j], singlePoint[i][j-1]);
+    	}
     }
 
     public boolean isOpen(int i, int j)
@@ -83,11 +83,9 @@ public class Percolation
     
     public static void main(String[] args)
     {
-    	Percolation perlocation = new Percolation(20);
-    	perlocation.open(1, 6);
-    	perlocation.open(2, 6);
-    	perlocation.open(3, 6);
-    	PercolationVisualizer.draw(perlocation, 19);
+//    	Percolation perlocation = new Percolation(20);
+//    	perlocation.open(1, 5);
+//    	PercolationVisualizer.draw(perlocation, 5);
     }
     
     
