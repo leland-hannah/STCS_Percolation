@@ -6,9 +6,10 @@ public class Percolation
 	private WeightedQuickUnionUF wu;
 	private int vTop = 0;
 	private int vBottom; 
-	
+	private int size;
     public Percolation(int n)
     {
+    	size = n;
     	grid = new boolean[n][n];
     	singlePoint = new int[n][n];
     	wu = new WeightedQuickUnionUF((n*n) + 2);
@@ -32,7 +33,7 @@ public class Percolation
     
     public int IntExchange(int i, int j)
     {
-    	return singlePoint[i-1][j-1];
+    	return size * (i - 1) + j;
     }
     
     public void open(int i, int j)
@@ -43,11 +44,22 @@ public class Percolation
     	{
     		wu.union(IntExchange(i, j), vTop);
     	}
-    	else if(transfer(i-1, j))
+    	if(i > 1 && transfer(i-1, j))
     	{
     		wu.union(IntExchange(i, j), IntExchange(i-1, j));
     	}
-    	
+    	if( i < size && transfer(i+1, j))
+    	{
+    		wu.union(IntExchange(i, j), IntExchange(i+1, j));
+    	}
+    	if(j > 1 && transfer(i, j-1))
+    	{
+    		wu.union(IntExchange(i, j), IntExchange(i, j-1));
+    	}
+    	if(j < size && transfer(i, j+1))
+    	{
+    		wu.union(IntExchange(i, j), IntExchange(i, j+1));
+    	}
     	if(i == 5)
     	{
     		wu.union(IntExchange(i, j), vBottom);
