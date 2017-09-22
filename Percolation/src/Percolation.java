@@ -60,7 +60,7 @@ public class Percolation
     	{
     		wu.union(IntExchange(i, j), IntExchange(i, j+1));
     	}
-    	if(i == 5)
+    	if(i == size)
     	{
     		wu.union(IntExchange(i, j), vBottom);
     	}
@@ -73,13 +73,11 @@ public class Percolation
 
     public boolean isFull(int i, int j)
     {
-    	if(transfer(i, j))
-    	{
-        	if(wu.find(vTop) == wu.find(IntExchange(i, j)))
+        	if(wu.connected(vTop, IntExchange(i, j)))
         	{
         		return true;
         	}
-    	}
+    	
         
         return false;
     }
