@@ -1,27 +1,40 @@
 public class PercolationStats
 {
+	private int times;
+	private Percolation per;
+	private int n;
+	private double openSites = 0;
     public PercolationStats(int N, int T)
     {
-        throw new UnsupportedOperationException();
+    	n = N;
+        per = new Percolation(N);
+        for(int times = 0; times < T; times++)
+        {
+        	int i = (int)(Math.random()*n+1);
+        	int j = (int)(Math.random()*n+1);
+        	per.open(i, j);
+        	openSites ++;
+        }
     }
     
     public double mean()
     {
-        throw new UnsupportedOperationException();
+        return openSites/times;
     }
     
     public double stddev()
     {
-        throw new UnsupportedOperationException();
+        double top = Math.pow((openSites-mean()), 2);
+        return top/(times -1);
     }
     
     public double confidenceLo()
     {
-        throw new UnsupportedOperationException();
+       return mean() - ((1.96*Math.sqrt(stddev()))/(Math.sqrt(times)));
     }
     
     public double confidenceHi()
     {
-        throw new UnsupportedOperationException();
+    	 return mean() + ((1.96*Math.sqrt(stddev()))/(Math.sqrt(times)));
     }
 }
