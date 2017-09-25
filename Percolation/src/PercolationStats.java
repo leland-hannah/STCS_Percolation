@@ -27,8 +27,6 @@ public class PercolationStats
         		openSites ++;
         		array[times] = (double) openSites/(double) (N*N);
         	}
-        	
-        	//array[times] = (double) openSites/(double) (N*N);
         }
     }
     
