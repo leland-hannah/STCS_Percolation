@@ -25,9 +25,10 @@ public class PercolationStats
         		int j = StdRandom.uniform(N);
         		per.open(i+1, j+1);
         		openSites ++;
+        		array[times] = (double) openSites/(double) (N*N);
         	}
         	
-        	array[times] = (double) openSites/(double) (N*N);
+        	//array[times] = (double) openSites/(double) (N*N);
         }
     }
     
