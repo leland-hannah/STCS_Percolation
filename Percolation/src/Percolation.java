@@ -44,6 +44,10 @@ public class Percolation
     	{
     		wu.union(IntExchange(i, j), vTop);
     	}
+    	if(i == size)
+    	{
+    		wu.union(IntExchange(i, j), vBottom);
+    	}
     	if(i > 1 && transfer(i-1, j))
     	{
     		wu.union(IntExchange(i, j), IntExchange(i-1, j));
@@ -59,10 +63,6 @@ public class Percolation
     	if(j < size && transfer(i, j+1))
     	{
     		wu.union(IntExchange(i, j), IntExchange(i, j+1));
-    	}
-    	if(i == size)
-    	{
-    		wu.union(IntExchange(i, j), vBottom);
     	}
     }
 
