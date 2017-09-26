@@ -13,11 +13,11 @@ public class PercolationStats
     		}
 
     	array = new double[T];
+    	
         for(int times = 0; times < T; times++)
         {
         	int opensites = 0;
         	Percolation per = new Percolation(N);
-        	array = new double[T];
         	
         	while (!per.percolates())
         	{
