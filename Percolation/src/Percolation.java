@@ -4,6 +4,7 @@ public class Percolation
 	private int[][] singlePoint;
 	private boolean[][] grid;
 	private WeightedQuickUnionUF wu;
+	private WeightedQuickUnionUF wu2;
 	private int vTop = 0;
 	private int vBottom; 
 	private int size;
@@ -13,6 +14,7 @@ public class Percolation
     	grid = new boolean[n][n];
     	singlePoint = new int[n][n];
     	wu = new WeightedQuickUnionUF((n*n) + 2);
+    	wu2 = new WeightedQuickUnionUF((n*n)+1);
     	vBottom = (n*n) + 1;
     	int inside = 1;
     	
@@ -43,6 +45,7 @@ public class Percolation
     	if(i == 1)
     	{
     		wu.union(IntExchange(i, j), vTop);
+    		wu2.union(IntExchange(i, j), vTop);
     	}
     	if(i == size)
     	{
@@ -51,18 +54,22 @@ public class Percolation
     	if(i > 1 && transfer(i-1, j))
     	{
     		wu.union(IntExchange(i, j), IntExchange(i-1, j));
+    		wu2.union(IntExchange(i, j), IntExchange(i-1, j));
     	}
     	if( i < size && transfer(i+1, j))
     	{
     		wu.union(IntExchange(i, j), IntExchange(i+1, j));
+    		wu2.union(IntExchange(i, j), IntExchange(i+1, j));
     	}
     	if(j > 1 && transfer(i, j-1))
     	{
     		wu.union(IntExchange(i, j), IntExchange(i, j-1));
+    		wu2.union(IntExchange(i, j), IntExchange(i, j-1));
     	}
     	if(j < size && transfer(i, j+1))
     	{
     		wu.union(IntExchange(i, j), IntExchange(i, j+1));
+    		wu2.union(IntExchange(i, j), IntExchange(i, j+1));
     	}
     }
 
@@ -73,7 +80,7 @@ public class Percolation
 
     public boolean isFull(int i, int j)
     {
-        	if(wu.connected(vTop, IntExchange(i, j)))
+        	if(wu2.connected(vTop, IntExchange(i, j)))
         	{
         		return true;
         	}
@@ -93,16 +100,16 @@ public class Percolation
     }
     
     
-    public static void main(String[] args)
-    {
-    	Percolation perlocation = new Percolation(20);
-    	perlocation.open(1, 5);
-    	perlocation.open(2, 5);
-    	perlocation.open(3, 5);
-    	perlocation.open(4, 5);
-    	perlocation.open(5, 5);
-    	PercolationVisualizer.draw(perlocation, 5);
-    }
+//    public static void main(String[] args)
+//    {
+//    	Percolation perlocation = new Percolation(20);
+//    	perlocation.open(1, 5);
+//    	perlocation.open(2, 5);
+//    	perlocation.open(3, 5);
+//    	perlocation.open(4, 5);
+//    	perlocation.open(5, 5);
+//    	PercolationVisualizer.draw(perlocation, 5);
+//    }
     
     
     
