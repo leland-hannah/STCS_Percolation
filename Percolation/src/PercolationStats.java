@@ -4,7 +4,6 @@ public class PercolationStats
 {
 	private int times;
 	private double[] array;
-	private double openSites = 0;
     public PercolationStats(int N, int T)
     {
     	times = T;
@@ -13,20 +12,24 @@ public class PercolationStats
     			throw new java.lang.IllegalArgumentException("out of bounds");
     		}
 
-    	Percolation per = new Percolation(N);
     	array = new double[T];
         for(int times = 0; times < T; times++)
         {
- 
+        	int opensites = 0;
+        	Percolation per = new Percolation(N);
+        	array = new double[T];
         	
         	while (!per.percolates())
         	{
         		int i = StdRandom.uniform(N);
         		int j = StdRandom.uniform(N);
-        		per.open(i+1, j+1);
-        		openSites ++;
-        		array[times] = (double) openSites/(double) (N*N);
+        		if(!per.isOpen(i+1, j+1))
+        		{
+        			opensites ++;
+        			per.open(i+1, j+1);
+        		}
         	}
+        	array[times] = (double) opensites/(double) (N*N);
         }
     }
     
